@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Báo cáo Kỹ thuật: VKU Food Survey PWA</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm 12mm 10mm 12mm;
+    }
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.32;
+      color: #1e293b;
+      font-size: 9pt;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+    }
+    .page-break {
+      page-break-after: always;
+      break-after: page;
+    }
+    .header-univ {
+      text-align: center;
+      border-bottom: 2px solid #1e40af;
+      padding-bottom: 4px;
+      margin-bottom: 8px;
+    }
+    .header-univ h4 {
+      margin: 0;
+      font-size: 8.5pt;
+      text-transform: uppercase;
+      color: #475569;
+      font-weight: 600;
+    }
+    .header-univ h3 {
+      margin: 2px 0 0 0;
+      font-size: 10.5pt;
+      text-transform: uppercase;
+      color: #1e40af;
+      font-weight: 800;
+    }
+    .report-title {
+      text-align: center;
+      margin: 8px 0;
+    }
+    .report-title h1 {
+      font-size: 14pt;
+      color: #1e40af;
+      margin: 0 0 3px 0;
+      text-transform: uppercase;
+      letter-spacing: -0.3px;
+    }
+    .report-title h2 {
+      font-size: 10.5pt;
+      color: #ea580c;
+      margin: 0;
+      font-weight: 700;
+    }
+    .meta-box {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 5px;
+      padding: 6px 10px;
+      margin-bottom: 10px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+      font-size: 8.5pt;
+    }
+    .meta-box p {
+      margin: 0;
+    }
+    h2.section-title {
+      font-size: 10.5pt;
+      color: #1e40af;
+      border-bottom: 1px solid #cbd5e1;
+      padding-bottom: 2px;
+      margin: 10px 0 4px 0;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    h3.sub-title {
+      font-size: 9.5pt;
+      color: #334155;
+      margin: 6px 0 2px 0;
+      font-weight: 600;
+    }
+    p {
+      margin: 0 0 5px 0;
+      text-align: justify;
+    }
+    ul, ol {
+      margin: 0 0 5px 0;
+      padding-left: 16px;
+    }
+    li {
+      margin-bottom: 2px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 6px 0;
+      font-size: 8.5pt;
+    }
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 4px 6px;
+      text-align: left;
+    }
+    th {
+      background-color: #f1f5f9;
+      color: #1e40af;
+      font-weight: 700;
+    }
+    .badge {
+      display: inline-block;
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-weight: bold;
+      font-size: 7.5pt;
+    }
+    .badge-green { background: #dcfce7; color: #15803d; }
+    .diagram {
+      background: #f8fafc;
+      border: 1px dashed #94a3b8;
+      border-radius: 5px;
+      padding: 6px;
+      font-family: Consolas, monospace;
+      font-size: 7.5pt;
+      white-space: pre;
+      line-height: 1.15;
+      color: #0f172a;
+      margin: 6px 0;
+      text-align: center;
+    }
+    .footer-note {
+      font-size: 7.5pt;
+      color: #64748b;
+      text-align: right;
+      margin-top: 6px;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== TRANG 1 ==================== -->
+  <div class="header-univ">
+    <h4>BỘ GIÁO DỤC VÀ ĐÀO TẠO • ĐẠI HỌC ĐÀ NẴNG</h4>
+    <h3>TRƯỜNG ĐẠI HỌC CÔNG NGHỆ THÔNG TIN VÀ TRUYỀN THÔNG VIỆT - HÀN (VKU)</h3>
+    <h4>KHOA KHOA HỌC MÁY TÍNH</h4>
+  </div>
+
+  <div class="report-title">
+    <h1>BÁO CÁO KỸ THUẬT MINI-PROJECT 1</h1>
+    <h2>XÂY DỰNG ỨNG DỤNG PROGRESSIVE WEB APP KHẢO SÁT ẨM THỰC VKU (VKU FOOD SURVEY PWA)</h2>
+  </div>
+
+  <div class="meta-box">
+    <p><strong>Môn học:</strong> Phát triển Ứng dụng Di động Đa nền tảng</p>
+    <p><strong>Giảng viên hướng dẫn:</strong> TS. Nguyễn Thanh Tuấn</p>
+    <p><strong>Đề tài:</strong> Progressive Web App (Week 3 - Mini-Project 1)</p>
+    <p><strong>Sinh viên thực hiện:</strong> Sinh viên Khoa KHMT - VKU</p>
+    <p><strong>Tên miền Demo (HTTPS):</strong> https://chidung7271.id.vn</p>
+    <p><strong>Mã nguồn:</strong> GitHub Public Repository</p>
+  </div>
+
+  <h2 class="section-title">1. Giới thiệu & Mục tiêu Đề tài</h2>
+  <p>
+    Trong khuôn khổ môn học <em>Phát triển Ứng dụng Di động Đa nền tảng</em> tại VKU, Mini-Project 1 hướng tới xây dựng giải pháp khảo sát chất lượng dịch vụ ăn uống và căng tin sinh viên bằng công nghệ <strong>Progressive Web App (PWA)</strong>. Ứng dụng giải quyết triệt để sự cố mạng chập chờn tại các khu vực căng tin đông người bằng triết lý <strong>Offline-First</strong>.
+  </p>
+  <p>Dự án đáp ứng đầy đủ 5 tiêu chí cốt lõi của một ứng dụng PWA chuẩn:</p>
+  <ul>
+    <li><strong>Installable:</strong> Cài đặt độc lập lên màn hình chính thiết bị di động (Standalone mode) qua Web App Manifest, hiển thị biểu tượng và splash screen riêng biệt.</li>
+    <li><strong>Offline-First:</strong> Vận hành tin cậy ngay cả khi mất mạng nhờ Service Worker (Cache API) và IndexedDB (Dexie.js).</li>
+    <li><strong>Fast & Responsive:</strong> Thời gian nạp App Shell dưới 1 giây từ local cache; giao diện chuẩn Mobile-first tối ưu cho màn hình cảm ứng di động.</li>
+    <li><strong>Auto-Sync & Deduplication:</strong> Tự động đồng bộ hóa dữ liệu lên máy chủ ngay khi có mạng trở lại mà không tạo dữ liệu trùng lặp (Idempotency với UUID clientId).</li>
+    <li><strong>Secure:</strong> Triển khai bắt buộc trên giao thức bảo mật HTTPS (Vercel / Cloudflare Pages).</li>
+  </ul>
+
+  <h2 class="section-title">2. Kiến trúc Tổng thể & Công nghệ Lựa chọn</h2>
+  <div class="diagram">
++-------------------------------------------------------------------------------+
+|               NGƯỜI DÙNG / THIẾT BỊ DI ĐỘNG (MOBILE BROWSER)                  |
++-------------------------------------------------------------------------------+
+                                  |
+            +---------------------+---------------------+
+            | Giao diện Next.js   | Service Worker (sw) |
+            | • Form 5 tiêu chí   | • Cache-First Shell |
+            | • Mobile-First CSS  | • Offline fallback  |
+            +---------------------+---------------------+
+                        |                       |
+            (Khi Mất Mạng)            (Khi Có Mạng)
+                        |                       |
+                        v                       v
+            +---------------------+   +---------------------+
+            | IndexedDB (Dexie)   |   | NestJS REST API     |
+            | Table: surveys      |-->| POST /surveys       |
+            | [Pending Queue]     |   | GET  /surveys       |
+            +---------------------+   +---------------------+
+                                                |
+                                                v
+                                      +---------------------+
+                                      | MongoDB Database    |
+                                      | Unique: clientId    |
+                                      +---------------------+
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 22%;">Thành phần</th>
+        <th style="width: 38%;">Công nghệ sử dụng</th>
+        <th>Vai trò trong hệ thống</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Frontend</strong></td>
+        <td>Next.js 14 (App Router), TypeScript, Tailwind CSS</td>
+        <td>UI Mobile-first, Render App Shell, Star rating tương tác</td>
+      </tr>
+      <tr>
+        <td><strong>Local Storage</strong></td>
+        <td>IndexedDB (Dexie.js Wrapper)</td>
+        <td>Lưu trữ bản nháp khảo sát offline dạng bảng JSON</td>
+      </tr>
+      <tr>
+        <td><strong>PWA Core</strong></td>
+        <td>Service Worker, Cache API, Manifest</td>
+        <td>Pre-cache App Shell, đón bắt HTTP request, background sync</td>
+      </tr>
+      <tr>
+        <td><strong>Backend API</strong></td>
+        <td>NestJS 10, TypeScript, Mongoose</td>
+        <td>REST API /surveys, validate DTO, cơ chế chống duplicate</td>
+      </tr>
+      <tr>
+        <td><strong>Database</strong></td>
+        <td>MongoDB (Atlas Cloud / Local)</td>
+        <td>Lưu trữ dữ liệu khảo sát chính thức với unique index clientId</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="footer-note">Trang 1/3 — Báo cáo Kỹ thuật VKU Food Survey PWA</div>
+  <div class="page-break"></div>
+
+  <!-- ==================== TRANG 2 ==================== -->
+  <div class="header-univ">
+    <h4>BỘ GIÁO DỤC VÀ ĐÀO TẠO • ĐẠI HỌC ĐÀ NẴNG — TRƯỜNG ĐẠI HỌC CNTT & TT VIỆT - HÀN</h4>
+  </div>
+
+  <h2 class="section-title">3. Hiện thực Cơ chế Offline-First & Service Worker</h2>
+  <h3 class="sub-title">3.1. Cấu hình Web App Manifest</h3>
+  <p>
+    Tệp <code>public/manifest.json</code> khai báo định danh ứng dụng với <code>display: "standalone"</code> giúp ẩn thanh URL trình duyệt, màu chủ đạo <code>theme_color: "#1e40af"</code> (Xanh VKU), cùng hệ thống icon đa độ phân giải (192x192, 512x512 maskable). Người dùng có thể nhấn nút "Cài App" trực tiếp trên giao diện để đưa icon ra màn hình chính.
+  </p>
+
+  <h3 class="sub-title">3.2. Vòng đời Service Worker & Chiến lược Caching</h3>
+  <p>Service Worker (<code>public/sw.js</code>) triển khai 3 pha vòng đời cốt lõi:</p>
+  <ul>
+    <li><strong>Install Event:</strong> Mở cache <code>vku-food-survey-v1</code> và pre-cache App Shell tĩnh gồm các trang HTML (`/`, `/survey`, `/history`), CSS, icon. Sử dụng <code>skipWaiting()</code> để kích hoạt phiên bản mới ngay lập tức.</li>
+    <li><strong>Activate Event:</strong> Quét và xóa các phiên bản cache lỗi thời; gọi <code>clients.claim()</code> để kiểm soát toàn bộ tab đang mở.</li>
+    <li><strong>Fetch Event:</strong> Triển khai chiến lược caching phân tách theo loại tài nguyên:
+      <ul>
+        <li><strong>App Shell & Assets tĩnh (`/_next/`, icons, css):</strong> Áp dụng <em>Cache-First</em>. Ưu tiên đọc từ Cache để nạp tức thì dưới 1 giây; nếu chưa có mới tải từ mạng.</li>
+        <li><strong>Dữ liệu danh sách GET (`/surveys`):</strong> Áp dụng <em>Network-First</em>. Lấy dữ liệu mới nhất; nếu offline sẽ lấy bản snapshot từ cache.</li>
+        <li><strong>Gửi khảo sát POST (`/surveys`):</strong> Áp dụng <em>Network-Only</em> (không cache HTTP POST bằng Cache API). Tầng ứng dụng lưu trữ offline vào IndexedDB.</li>
+        <li><strong>Kiểm tra kết nối (`/api/ping`):</strong> Áp dụng <em>Network-Only</em> để phát hiện trạng thái offline tức thời.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3 class="sub-title">3.3. Lưu trữ Cấu trúc Offline với IndexedDB (Dexie.js)</h3>
+  <p>
+    Cơ sở dữ liệu cục bộ <code>surveyDB</code> được cấu hình qua Dexie với bảng <code>surveys</code> có cấu trúc schema: <code>'++id, clientId, status, createdAt'</code>. Mỗi bản ghi khảo sát cục bộ có cấu trúc:
+  </p>
+  <div class="diagram" style="text-align: left; padding: 5px 10px; font-size: 7.2pt;">
+{
+  id: 1,                          // Khóa chính tự tăng cục bộ
+  clientId: "550e8400-e29b-41d4", // UUID định danh duy nhất chống duplicate
+  status: "pending" | "synced",   // Trạng thái đồng bộ (pending, synced, failed)
+  data: {
+    foodName: "Cơm tấm sườn", location: "Căng tin Khu A", category: "Cơm",
+    tasteRating: 5, priceRating: 4, hygieneRating: 5, qualityRating: 5, overallRating: 5,
+    price: 25000, comment: "Rất ngon và vệ sinh"
+  },
+  createdAt: "2026-09-03T08:30:00.000Z"
+}
+  </div>
+
+  <h2 class="section-title">4. Cơ chế Tự động Đồng bộ (Auto-Sync) & Chống Trùng lặp (Deduplication)</h2>
+  <h3 class="sub-title">4.1. Quy trình phát hiện kết nối & Đồng bộ tự động</h3>
+  <ol>
+    <li>Khi bấm "Gửi khảo sát" lúc mất mạng: Dữ liệu kèm UUID <code>clientId</code> được lưu vào IndexedDB với <code>status: 'pending'</code>. Màn hình thông báo ngay: <em>"Đã lưu khảo sát trên thiết bị. Khảo sát sẽ được đồng bộ khi có mạng."</em></li>
+    <li>Hệ thống kích hoạt 2 kênh giám sát mạng:
+      <ul>
+        <li>Kênh 1: Lắng nghe sự kiện <code>window.addEventListener('online', ...)</code> và probe heartbeat <code>/api/ping</code> mỗi 2.5s.</li>
+        <li>Kênh 2: Đăng ký <code>Background Sync API</code> (tag <code>'vku-food-sync'</code>).</li>
+      </ul>
+    </li>
+    <li>Khi mạng phục hồi: Hàm <code>syncPendingSurveys()</code> quét toàn bộ bản ghi <code>pending</code>, gửi tuần tự qua <code>POST /surveys</code>.</li>
+    <li>Khi server phản hồi HTTP 201, hàm <code>markAsSynced(clientId)</code> đổi trạng thái sang <code>synced</code>, badge đổi sang ✅ <strong>Đã đồng bộ</strong> và thông báo toast cho người dùng.</li>
+  </ol>
+
+  <h3 class="sub-title">4.2. Kỹ thuật Chống Trùng lặp (Idempotency với UUID clientId)</h3>
+  <p>Trong môi trường mạng không ổn định, request sync có thể bị gửi lặp lại:</p>
+  <ul>
+    <li>Ở Frontend: Mỗi khảo sát tạo duy nhất 1 mã UUID <code>clientId</code> (qua <code>crypto.randomUUID()</code>) ngay lúc tạo.</li>
+    <li>Ở Backend: Schema Mongoose thiết lập <code>clientId: { type: String, unique: true, index: true }</code>. Service kiểm tra <code>findOne({ clientId })</code>. Nếu đã tồn tại, backend trả về kết quả thành công và đánh dấu <code>isDuplicate: true</code> mà không tạo thêm bản ghi thừa.</li>
+  </ul>
+
+  <div class="footer-note">Trang 2/3 — Báo cáo Kỹ thuật VKU Food Survey PWA</div>
+  <div class="page-break"></div>
+
+  <!-- ==================== TRANG 3 ==================== -->
+  <div class="header-univ">
+    <h4>BỘ GIÁO DỤC VÀ ĐÀO TẠO • ĐẠI HỌC ĐÀ NẴNG — TRƯỜNG ĐẠI HỌC CNTT & TT VIỆT - HÀN</h4>
+  </div>
+
+  <h2 class="section-title">5. Đánh giá Kết quả Kiểm thử</h2>
+  <p>Dự án đã trải qua quá trình kiểm thử thực tế theo các tiêu chuẩn kỹ thuật nghiêm ngặt:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Kịch bản kiểm thử</th>
+        <th style="width: 45%;">Hành vi hệ thống</th>
+        <th style="width: 30%;">Kết quả thực tế</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1. Cài đặt PWA</strong></td>
+        <td>Trình duyệt hiện nút cài đặt, tạo app standalone</td>
+        <td><span class="badge badge-green">ĐẠT (PASS)</span> Mở full màn hình</td>
+      </tr>
+      <tr>
+        <td><strong>2. Nạp App khi Offline</strong></td>
+        <td>DevTools Network = Offline, tải lại trang (F5)</td>
+        <td><span class="badge badge-green">ĐẠT (PASS)</span> App Shell nạp tức thì từ Cache</td>
+      </tr>
+      <tr>
+        <td><strong>3. Nhận diện mạng</strong></td>
+        <td>Chuyển đổi Network Offline / No throttling</td>
+        <td><span class="badge badge-green">ĐẠT (PASS)</span> Badge đổi 🟠 Offline / 🟢 Online</td>
+      </tr>
+      <tr>
+        <td><strong>4. Gửi khảo sát Offline</strong></td>
+        <td>Điền form và nhấn Gửi khi mất mạng</td>
+        <td><span class="badge badge-green">ĐẠT (PASS)</span> Lưu an toàn vào IndexedDB (pending)</td>
+      </tr>
+      <tr>
+        <td><strong>5. Tự động đồng bộ</strong></td>
+        <td>Bật lại Internet (Network = Online)</td>
+        <td><span class="badge badge-green">ĐẠT (PASS)</span> Tự đẩy lên NestJS & MongoDB</td>
+      </tr>
+      <tr>
+        <td><strong>6. Kiểm tra trùng lặp</strong></td>
+        <td>Bấm nút đồng bộ lại nhiều lần</td>
+        <td><span class="badge badge-green">ĐẠT (PASS)</span> MongoDB chỉ lưu duy nhất 1 bản ghi</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 class="section-title">6. Triển khai Hệ thống (Deployment)</h2>
+  <ul>
+    <li><strong>Frontend PWA:</strong> Triển khai trên <strong>Vercel</strong>, tự động cấp phát chứng chỉ HTTPS miễn phí. Tích hợp tên miền cá nhân <code>https://chidung7271.id.vn</code> (hoặc subdomain <code>vku-food.chidung7271.id.vn</code>) thông qua bản ghi DNS CNAME trỏ về <code>cname.vercel-dns.com</code>.</li>
+    <li><strong>Backend API:</strong> Triển khai trên <strong>Render.com</strong> / Railway, chạy NestJS production build.</li>
+    <li><strong>Cơ sở dữ liệu:</strong> Cụm đám mây <strong>MongoDB Atlas</strong> (M0 Free Tier) tại Singapore cho độ trễ kết nối cực thấp.</li>
+  </ul>
+
+  <h2 class="section-title">7. Kết luận & Hướng phát triển Tuần tiếp theo</h2>
+  <p>
+    <strong>Kết luận:</strong> Mini-Project 1 đã hoàn thành xuất sắc toàn bộ các mục tiêu đặt ra cho bài tập Progressive Web App: xây dựng thành công ứng dụng khảo sát ẩm thực VKU chuẩn Mobile-first, cài đặt độc lập, nạp offline qua Service Worker, lưu trữ bền vững với IndexedDB Dexie, và tự động đồng bộ hóa thông minh chống trùng lặp.
+  </p>
+  <p>
+    <strong>Kế hoạch tiếp theo (Theo nội dung Slide 11 - Week 4):</strong>
+  </p>
+  <ul>
+    <li>Đóng gói mã nguồn PWA này thành tệp cài đặt <strong>Android APK nguyên bản</strong> sử dụng <strong>Capacitor Bridge (`@capacitor/core`, `@capacitor/android`)</strong>.</li>
+    <li>Tích hợp phần cứng thiết bị di động (Camera chụp ảnh món ăn căng tin, Geolocation định vị vị trí căng tin).</li>
+  </ul>
+
+  <div style="margin-top: 25px; display: flex; justify-content: space-between; text-align: center;">
+    <div style="width: 45%;">
+      <p style="margin: 0; font-weight: 600;">Giảng viên hướng dẫn</p>
+      <p style="margin-top: 35px; font-weight: 700; color: #1e40af;">TS. Nguyễn Thanh Tuấn</p>
+    </div>
+    <div style="width: 45%;">
+      <p style="margin: 0; font-weight: 600;">Sinh viên thực hiện</p>
+      <p style="margin-top: 35px; font-weight: 700; color: #1e40af;">Sinh viên Khoa KHMT - VKU</p>
+    </div>
+  </div>
+
+  <div class="footer-note" style="margin-top: 25px;">Trang 3/3 — Báo cáo Kỹ thuật VKU Food Survey PWA</div>
+
+</body>
+</html>
+
